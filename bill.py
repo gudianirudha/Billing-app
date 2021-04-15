@@ -33,17 +33,33 @@ class Bill_App:
         self.fanta = IntVar()
         self.up = IntVar()
         
+        
+        #customer
+        self.name = StringVar()
+        self.phone = StringVar()
+        self.billno = StringVar()
+        self.search_bill = StringVar()
+        
+        self.coffee_total = StringVar()
+        self.pizza_total = StringVar()
+        self.drinks_total = StringVar()
+        
+        self.ctax = StringVar()
+        self.ptax = StringVar()
+        self.dtax = StringVar()
+        
+        
         A1= LabelFrame(self.root,text="Customer Details",font=('Open sans',20,"bold"),bg=bg_color,fg="black")
         A1.place(x=0,y=80,relwidth=1)
         
         cname = Label(A1,text="Name",font=('Open sans',18,"bold"),fg="white",bg=bg_color).grid(row=0,column=0,padx=20,pady=5)
-        cname_txt = Entry(A1,width=15,font=("arial 14"),bd=7,relief=SUNKEN).grid(row=0,column=1,pady=5,padx=10)
+        cname_txt = Entry(A1,textvariable=self.name,width=15,font=("arial 14"),bd=7,relief=SUNKEN).grid(row=0,column=1,pady=5,padx=10)
         
         cphone = Label(A1,text="Phone Number",font=('Open sans',18,"bold"),fg="white",bg=bg_color).grid(row=0,column=2,padx=20,pady=5)
-        cphone_txt = Entry(A1,width=15,font=("arial 14"),bd=7,relief=SUNKEN).grid(row=0,column=3,pady=5,padx=10)
+        cphone_txt = Entry(A1,textvariable=self.phone,width=15,font=("arial 14"),bd=7,relief=SUNKEN).grid(row=0,column=3,pady=5,padx=10)
         
         cbill = Label(A1,text="Bill",font=('Open sans',18,"bold"),fg="white",bg=bg_color).grid(row=0,column=4,padx=20,pady=5)
-        cbill_txt = Entry(A1,width=15,font=("arial 14"),bd=7,relief=SUNKEN).grid(row=0,column=5,pady=5,padx=10)
+        cbill_txt = Entry(A1,textvariable=self.billno,width=15,font=("arial 14"),bd=7,relief=SUNKEN).grid(row=0,column=5,pady=5,padx=10)
         
         bill_btn =Button(A1,text="Search",width=5,bd=7,font=("arial 13 bold")).grid(row=0,column=6,padx=10,pady=10)
         
@@ -53,75 +69,75 @@ class Bill_App:
         
         
         ame = Label(A2,font=('Open sans',13,"bold"),text="Cafe Americano",fg="red",bg=bg_color).grid(row=0,column=0,padx=10,pady=10,sticky="w")
-        ame_txt = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=0,column=1,pady=10,padx=10)
+        ame_txt = Entry(A2,textvariable=self.cafe,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=0,column=1,pady=10,padx=10)
         
         filter_c= Label(A2,font=('Open sans',13,"bold"),text="Filter Coffee",fg="red",bg=bg_color).grid(row=1,column=0,padx=10,pady=10,sticky="w")
-        filter_c_txt = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=1,column=1,pady=10,padx=10)
+        filter_c_txt = Entry(A2,textvariable=self.filter,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=1,column=1,pady=10,padx=10)
         
         cappuccino = Label(A2,font=('Open sans',13,"bold"),text="Cappuccino",fg="red",bg=bg_color).grid(row=2,column=0,padx=10,pady=10,sticky="w")
-        cappuccino_txt = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,pady=10,padx=10)
+        cappuccino_txt = Entry(A2,textvariable=self.capp,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,pady=10,padx=10)
         
         Kaapi_Nirvana = Label(A2,font=('Open sans',13,"bold"),text="Kaapi Nirvana",fg="red",bg=bg_color).grid(row=3,column=0,padx=10,pady=10,sticky="w")
-        Kaap_Nirvana_txt = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,pady=10,padx=10)
+        Kaap_Nirvana_txt = Entry(A2,textvariable=self.kaapi,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,pady=10,padx=10)
         
         expresso = Label(A2,font=('Open sans',13,"bold"),text="Espresso",fg="red",bg=bg_color).grid(row=4,column=0,padx=10,pady=10,sticky="w")
-        expreso_txt = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,pady=10,padx=10)
+        expreso_txt = Entry(A2,textvariable=self.esp,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,pady=10,padx=10)
         
         Frap= Label(A2,font=('Open sans',13,"bold"),text="Coffee Frappuccino",fg="red",bg=bg_color).grid(row=5,column=0,padx=10,pady=10,sticky="w")
-        Frap_text = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,pady=10,padx=10)
+        Frap_text = Entry(A2,textvariable=self.frap,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,pady=10,padx=10)
         
         Brewed =Label(A2,font=('Open sans',13,"bold"),text="Brewed Coffee",fg="red",bg=bg_color).grid(row=6,column=0,padx=10,pady=10,sticky="w")
-        Brewed_text = Entry(A2,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,pady=10,padx=10)
+        Brewed_text = Entry(A2,textvariable=self.brew,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,pady=10,padx=10)
           
         #
         A3 = LabelFrame(self.root,text="Pizza",relief=GROOVE,bd=10,font=('Open sans',20,"bold"),bg=bg_color,fg="black")
         A3.place(x=340,y=170,width=390,height=430)
       
         Margherita = Label(A3,font=('Open sans',13,"bold"),text="Margherita",fg="red",bg=bg_color).grid(row=0,column=0,padx=10,pady=10,sticky="w")
-        Margherita_txt = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=0,column=1,pady=10,padx=10)
+        Margherita_txt = Entry(A3,textvariable=self.pizza,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=0,column=1,pady=10,padx=10)
         
         Tango= Label(A3,font=('Open sans',13,"bold"),text="Spicy Triple Tango",fg="red",bg=bg_color).grid(row=1,column=0,padx=10,pady=10,sticky="w")
-        Tango_txt = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=1,column=1,pady=10,padx=10)
+        Tango_txt = Entry(A3,textvariable=self.tango,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=1,column=1,pady=10,padx=10)
         
         Veggie = Label(A3,font=('Open sans',13,"bold"),text="Veggie Paradise",fg="red",bg=bg_color).grid(row=2,column=0,padx=10,pady=10,sticky="w")
-        Veggie_txt = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,pady=10,padx=10)
+        Veggie_txt = Entry(A3,textvariable=self.veggie,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,pady=10,padx=10)
         
         Paneer = Label(A3,font=('Open sans',13,"bold"),text="Paneer",fg="red",bg=bg_color).grid(row=3,column=0,padx=10,pady=10,sticky="w")
-        Paneer_txt = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,pady=10,padx=10)
+        Paneer_txt = Entry(A3,textvariable=self.paneer,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,pady=10,padx=10)
         
         Veg = Label(A3,font=('Open sans',13,"bold"),text="Veg Wonder",fg="red",bg=bg_color).grid(row=4,column=0,padx=10,pady=10,sticky="w")
-        Veg_txt = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,pady=10,padx=10)
+        Veg_txt = Entry(A3,textvariable=self.veg,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,pady=10,padx=10)
         
         extra= Label(A3,font=('Open sans',13,"bold"),text="Extravaganza",fg="red",bg=bg_color).grid(row=5,column=0,padx=10,pady=10,sticky="w")
-        extra_text = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,pady=10,padx=10)
+        extra_text = Entry(A3,textvariable=self.extra,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,pady=10,padx=10)
         
         Jalapeno =Label(A3,font=('Open sans',13,"bold"),text="Jalapeno",fg="red",bg=bg_color).grid(row=6,column=0,padx=10,pady=10,sticky="w")
-        Jalapeno_text = Entry(A3,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,pady=10,padx=10)
+        Jalapeno_text = Entry(A3,textvariable=self.jala,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,pady=10,padx=10)
         
       
         A4 = LabelFrame(self.root,text="Drinks",relief=GROOVE,bd=10,font=('Open sans',20,"bold"),bg=bg_color,fg="black")
         A4.place(x=670,y=170,width=390,height=430)
         
         Pepsi = Label(A4,font=('Open sans',13,"bold"),text="Pepsi",fg="red",bg=bg_color).grid(row=0,column=0,padx=10,pady=10,sticky="w")
-        Pepsi_txt = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=0,column=1,pady=10,padx=10)
+        Pepsi_txt = Entry(A4,textvariable=self.pepsi,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=0,column=1,pady=10,padx=10)
         
         coca = Label(A4,font=('Open sans',13,"bold"),text="Coca Cola",fg="red",bg=bg_color).grid(row=1,column=0,padx=10,pady=10,sticky="w")
-        coca_txt = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=1,column=1,pady=10,padx=10)
+        coca_txt = Entry(A4,textvariable=self.coca,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=1,column=1,pady=10,padx=10)
         
         Slice = Label(A4,font=('Open sans',13,"bold"),text="Slice",fg="red",bg=bg_color).grid(row=2,column=0,padx=10,pady=10,sticky="w")
-        Slice_txt = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,pady=10,padx=10)
+        Slice_txt = Entry(A4,textvariable=self.slice,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,pady=10,padx=10)
         
         Sprite = Label(A4,font=('Open sans',13,"bold"),text="Sprite",fg="red",bg=bg_color).grid(row=3,column=0,padx=10,pady=10,sticky="w")
-        Sprite_txt = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,pady=10,padx=10)
+        Sprite_txt = Entry(A4,textvariable=self.sprite,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,pady=10,padx=10)
         
         Limca = Label(A4,font=('Open sans',13,"bold"),text="Limca",fg="red",bg=bg_color).grid(row=4,column=0,padx=10,pady=10,sticky="w")
-        Limca = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,pady=10,padx=10)
+        Limca = Entry(A4,textvariable=self.limca,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,pady=10,padx=10)
         
         Fanta = Label(A4,font=('Open sans',13,"bold"),text="Fanta",fg="red",bg=bg_color).grid(row=5,column=0,padx=10,pady=10,sticky="w")
-        Fanta_text = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,pady=10,padx=10)
+        Fanta_text = Entry(A4,textvariable=self.fanta,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,pady=10,padx=10)
         
         Up=Label(A4,font=('Open sans',13,"bold"),text="7 Up",fg="red",bg=bg_color).grid(row=6,column=0,padx=10,pady=10,sticky="w")
-        Up_text = Entry(A4,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,pady=10,padx=10)
+        Up_text = Entry(A4,textvariable=self.up,width=10,font=("Open sans",16,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,pady=10,padx=10)
         
         
         A5 = LabelFrame(self.root,relief=GROOVE,bd=10)
@@ -137,23 +153,23 @@ class Bill_App:
         A6.place(x=0,y=590,relwidth=1,height=140)
         
         m1_lbl = Label(A6,text="Total Coffee Price",font=("times new roman",14,"bold")).grid(row=0,column=0,padx=20,pady=1,sticky="w")
-        m1_text = Entry(A6,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=1)
+        m1_text = Entry(A6,textvariable=self.coffee_total,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=1)
         
         m2_lbl = Label(A6,text="Total Pizza Price",font=("times new roman",14,"bold")).grid(row=1,column=0,padx=20,pady=1,sticky="w")
-        m3_text = Entry(A6,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=1,column=1,padx=10,pady=1)
+        m3_text = Entry(A6,textvariable=self.pizza_total,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=1,column=1,padx=10,pady=1)
         
         m3_lbl = Label(A6,text="Total Drinks Price",font=("times new roman",14,"bold")).grid(row=2,column=0,padx=20,pady=1,sticky="w")
-        m3_text = Entry(A6,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=2,column=1,padx=10,pady=1)
+        m3_text = Entry(A6,textvariable=self.drinks_total,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=2,column=1,padx=10,pady=1)
         
         
         c1_lbl = Label(A6,text="Total Coffee Tax",font=("times new roman",14,"bold")).grid(row=0,column=2,padx=20,pady=1,sticky="w")
-        c1_text = Entry(A6,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=3,padx=10,pady=1)
+        c1_text = Entry(A6,textvariable=self.ctax,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=3,padx=10,pady=1)
         
         c2_lbl = Label(A6,text="Total Pizza Tax",font=("times new roman",14,"bold")).grid(row=1,column=2,padx=20,pady=1,sticky="w")
-        c2_text = Entry(A6,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=1,column=3,padx=10,pady=1)
+        c2_text = Entry(A6,textvariable=self.ptax,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=1,column=3,padx=10,pady=1)
         
         c3_lbl = Label(A6,text="Total Drinks Tax",font=("times new roman",14,"bold")).grid(row=2,column=2,padx=20,pady=1,sticky="w")
-        c3_text = Entry(A6,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=2,column=3,padx=10,pady=1)
+        c3_text = Entry(A6,textvariable=self.dtax,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=2,column=3,padx=10,pady=1)
         
         btn_F = Frame(A6,bd=7,relief=GROOVE)
         btn_F.place(x=710,width=650,height=95)
