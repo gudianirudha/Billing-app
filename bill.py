@@ -8,6 +8,31 @@ class Bill_App:
         bg_color = "#ffd390"
         title = Label(self.root,text="Billing Software",bd=12,relief=GROOVE,bg=bg_color,fg="red",font=('Open sans',30,'bold'),pady=2).pack(fill=X)
         
+        #variables
+        self.cafe = IntVar()
+        self.filter = IntVar()
+        self.capp = IntVar()
+        self.kaapi = IntVar()
+        self.esp = IntVar()
+        self.frap = IntVar()
+        self.brew = IntVar()
+        
+        self.pizza = IntVar()
+        self.tango = IntVar()
+        self.veggie = IntVar()
+        self.paneer = IntVar()
+        self.veg = IntVar()
+        self.extra = IntVar()
+        self.jala = IntVar()
+        
+        self.pepsi = IntVar()
+        self.coca = IntVar()
+        self.slice = IntVar()
+        self.sprite = IntVar()
+        self.limca = IntVar()
+        self.fanta = IntVar()
+        self.up = IntVar()
+        
         A1= LabelFrame(self.root,text="Customer Details",font=('Open sans',20,"bold"),bg=bg_color,fg="black")
         A1.place(x=0,y=80,relwidth=1)
         
