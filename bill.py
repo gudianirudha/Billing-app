@@ -40,9 +40,9 @@ class Bill_App:
         self.billno = StringVar()
         self.search_bill = StringVar()
         
-        self.coffee_total = StringVar()
-        self.pizza_total = StringVar()
-        self.drinks_total = StringVar()
+        self.coffee_prize = StringVar()
+        self.pizza_prize = StringVar()
+        self.drinks_prize = StringVar()
         
         self.ctax = StringVar()
         self.ptax = StringVar()
@@ -153,13 +153,13 @@ class Bill_App:
         A6.place(x=0,y=590,relwidth=1,height=140)
         
         m1_lbl = Label(A6,text="Total Coffee Price",font=("times new roman",14,"bold")).grid(row=0,column=0,padx=20,pady=1,sticky="w")
-        m1_text = Entry(A6,textvariable=self.coffee_total,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=1)
+        m1_text = Entry(A6,textvariable=self.coffee_prize,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=1)
         
         m2_lbl = Label(A6,text="Total Pizza Price",font=("times new roman",14,"bold")).grid(row=1,column=0,padx=20,pady=1,sticky="w")
-        m3_text = Entry(A6,textvariable=self.pizza_total,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=1,column=1,padx=10,pady=1)
+        m3_text = Entry(A6,textvariable=self.pizza_prize,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=1,column=1,padx=10,pady=1)
         
         m3_lbl = Label(A6,text="Total Drinks Price",font=("times new roman",14,"bold")).grid(row=2,column=0,padx=20,pady=1,sticky="w")
-        m3_text = Entry(A6,textvariable=self.drinks_total,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=2,column=1,padx=10,pady=1)
+        m3_text = Entry(A6,textvariable=self.drinks_prize,width=18,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=2,column=1,padx=10,pady=1)
         
         
         c1_lbl = Label(A6,text="Total Coffee Tax",font=("times new roman",14,"bold")).grid(row=0,column=2,padx=20,pady=1,sticky="w")
@@ -174,15 +174,50 @@ class Bill_App:
         btn_F = Frame(A6,bd=7,relief=GROOVE)
         btn_F.place(x=710,width=650,height=95)
         
-        total_btn = Button(btn_F,text="Total",bg="cadetblue",fg="white",pady=15,width=15,font="arial 13 bold").grid(row=0,column=0,padx=5,pady=5)
+        total_btn = Button(btn_F,command=self.total,text="Total",bg="cadetblue",fg="white",pady=15,width=15,font="arial 13 bold").grid(row=0,column=0,padx=5,pady=5)
         generate_btn = Button(btn_F,text="Generate Bill",bg="cadetblue",fg="white",pady=13,width=15,font="arial 13 bold").grid(row=0,column=1,padx=5,pady=5)
         clear_btn = Button(btn_F,text="Clear",bg="cadetblue",fg="white",pady=15,width=13,font="arial 13 bold").grid(row=0,column=2,padx=5,pady=5)
         exit_btn = Button(btn_F,text="Exit",bg="cadetblue",fg="white",pady=15,width=13,font="arial 13 bold").grid(row=0,column=3,padx=5,pady=5)
         
         
         
+    def total(self):
+        self.total_coffee_prize = float(
+                                (self.cafe.get()*50) +
+                                (self.filter.get()*40) +
+                                (self.capp.get()*150) +
+                                (self.kaapi.get()*40) +
+                                (self.esp.get()*125) +
+                                (self.frap.get()*150) +
+                                (self.brew.get()*200) 
+                                )
+        self.coffee_prize.set("Rs. " + str(self.total_coffee_prize))
+        self.ctax.set("Rs. "+ str(self.total_coffee_prize*0.05))
+        
+        self.total_pizza_prize = float(
+                                (self.pizza.get()*100) +
+                                (self.tango.get()*120) +
+                                (self.veggie.get()*150) +
+                                (self.paneer.get()*140) +
+                                (self.veg.get()*125) +
+                                (self.extra.get()*150) +
+                                (self.jala.get()*200) 
+                                )
+        self.pizza_prize.set("Rs. " + str(self.total_pizza_prize))
+        self.ptax.set("Rs. "+ str(self.total_pizza_prize*0.08))
         
         
+        self.total_drinks_prize = float(
+                                (self.pepsi.get()*20) +
+                                (self.coca.get()*20) +
+                                (self.slice.get()*30) +
+                                (self.sprite.get()*20) +
+                                (self.limca.get()*25) +
+                                (self.fanta.get()*50) +
+                                (self.up.get()*20) 
+                                )
+        self.drinks_prize.set("Rs. " + str(self.total_drinks_prize))
+        self.dtax.set("Rs. "+ str(self.total_drinks_prize*0.08))
         
 root=Tk()
 obj = Bill_App(root)
