@@ -175,22 +175,31 @@ class Bill_App:
         btn_F.place(x=710,width=650,height=95)
         
         total_btn = Button(btn_F,command=self.total,text="Total",bg="cadetblue",fg="white",pady=15,width=15,font="arial 13 bold").grid(row=0,column=0,padx=5,pady=5)
-        generate_btn = Button(btn_F,text="Generate Bill",bg="cadetblue",fg="white",pady=13,width=15,font="arial 13 bold").grid(row=0,column=1,padx=5,pady=5)
+        generate_btn = Button(btn_F,command=self.bill_area,text="Generate Bill",bg="cadetblue",fg="white",pady=13,width=15,font="arial 13 bold").grid(row=0,column=1,padx=5,pady=5)
         clear_btn = Button(btn_F,text="Clear",bg="cadetblue",fg="white",pady=15,width=13,font="arial 13 bold").grid(row=0,column=2,padx=5,pady=5)
         exit_btn = Button(btn_F,text="Exit",bg="cadetblue",fg="white",pady=15,width=13,font="arial 13 bold").grid(row=0,column=3,padx=5,pady=5)
         
         
         
     def total(self):
+        self.c_p = self.cafe.get()*50
+        self.f_p = self.filter.get()*40
+        self.ca_p = self.capp.get()*150
+        self.k_p = self.kaapi.get()*40
+        self.e_p = self.esp.get()*125                    
+        self.fr_p = self.frap.get()*150
+        self.br_p = self.brew.get()*200 
+        
         self.total_coffee_prize = float(
-                                (self.cafe.get()*50) +
-                                (self.filter.get()*40) +
-                                (self.capp.get()*150) +
-                                (self.kaapi.get()*40) +
-                                (self.esp.get()*125) +
-                                (self.frap.get()*150) +
-                                (self.brew.get()*200) 
-                                )
+                                        self.c_p +
+                                        self.f_p +
+                                        self.ca_p +
+                                        self.k_p +
+                                        self.e_p +
+                                        self.fr_p +
+                                        self.br_p
+                                    )
+        
         self.coffee_prize.set("Rs. " + str(self.total_coffee_prize))
         self.ctax.set("Rs. "+ str(self.total_coffee_prize*0.05))
         
@@ -204,7 +213,7 @@ class Bill_App:
                                 (self.jala.get()*200) 
                                 )
         self.pizza_prize.set("Rs. " + str(self.total_pizza_prize))
-        self.ptax.set("Rs. "+ str(self.total_pizza_prize*0.08))
+        self.ptax.set("Rs. "+ str(self.total_pizza_prize*0.1))
         
         
         self.total_drinks_prize = float(
@@ -219,6 +228,44 @@ class Bill_App:
         self.drinks_prize.set("Rs. " + str(self.total_drinks_prize))
         self.dtax.set("Rs. "+ str(self.total_drinks_prize*0.08))
         
+        
+    def welcome_bill(self):
+        self.txtarea.delete('1.0',END)
+        self.txtarea.insert(END,"\t Welcome to RCB CAFE")
+        self.txtarea.insert(END,f"\n Bill Number :  {self.billno.get()}")
+        self.txtarea.insert(END,f"\n Customer Name :  {self.name.get()}")
+        self.txtarea.insert(END,f"\n Phone Number :  {self.phone.get()}")
+        self.txtarea.insert(END,f"\n==========================================")
+        self.txtarea.insert(END,f"Product\t\tQuantity\t\tPrice")
+        self.txtarea.insert(END,f"\n==========================================")
+    
+    def bill_area(self):
+        
+        #Coffee Part
+        self.welcome_bill()
+        if self.cafe.get()!=0:
+            self.txtarea.insert(END,f"\n Cafe Americano\t\t{self.cafe.get()}\t\t{self.c_p}")
+        if self.filter.get()!=0:
+            self.txtarea.insert(END,f"\n Filter Coffee\t\t{self.filter.get()}\t\t{self.f_p}")
+        if self.capp.get()!=0:
+             self.txtarea.insert(END,f"\n Cappuccino\t\t{self.capp.get()}\t\t{self.k_p}")
+        if self.kaapi.get()!=0:
+             self.txtarea.insert(END,f"\n Kaapi Nirvana\t\t{self.kaapi.get()}\t\t{self.k_p}")
+        if self.esp.get()!=0:
+            self.txtarea.insert(END,f"\n Espresso\t\t{self.esp.get()}\t\t{self.e_p}")
+        if self.frap.get()!=0:
+            self.txtarea.insert(END,f"\n Frappuccino\t\t{self.frap.get()}\t\t{self.fr_p}")
+        if self.brew.get()!=0:
+            self.txtarea.insert(END,f"\n Brewed Coffee \t\t{self.brew.get()}\t\t{self.br_p}")
+            
+
+        self.txtarea.insert(END,f"\n------------------------------------------")
+        self.txtarea.insert(END,f"Total Coffee Tax \t\t{self.ctax.get()}")
+        self.txtarea.insert(END,f"\n------------------------------------------")
+        
+        
+        
+                    
 root=Tk()
 obj = Bill_App(root)
 root.mainloop()
