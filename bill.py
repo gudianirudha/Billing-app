@@ -281,13 +281,8 @@ class Bill_App:
             self.txtarea.insert(END,f"\n Frappuccino\t\t{self.frap.get()}\t\t{self.fr_p}")
         if self.brew.get()!=0:
             self.txtarea.insert(END,f"\n Brewed Coffee \t\t{self.brew.get()}\t\t{self.br_p}")
-            
-
-        self.txtarea.insert(END,f"\n------------------------------------------")
-        self.txtarea.insert(END,f"Total Coffee Tax \t\t{self.ctax.get()}")
-        self.txtarea.insert(END,f"\n------------------------------------------")
-        
-        
+                    
+        #pizza
         if self.pizza.get()!=0:
             self.txtarea.insert(END,f"\n Margherita\t\t{self.pizza.get()}\t\t{self.pizza_p}")
         if self.tango.get()!=0:
@@ -302,11 +297,6 @@ class Bill_App:
             self.txtarea.insert(END,f"\n Extravaganza\t\t{self.extra.get()}\t\t{self.ex_p}")
         if self.jala.get()!=0:
             self.txtarea.insert(END,f"\n Jalapeno \t\t{self.jala.get()}\t\t{self.ja_p}")
-            
-        self.txtarea.insert(END,f"\n------------------------------------------")
-        self.txtarea.insert(END,f"Total Pizza Tax \t\t{self.ptax.get()}")
-        self.txtarea.insert(END,f"\n------------------------------------------")
-        
         
         # Drinks 
         
@@ -324,11 +314,13 @@ class Bill_App:
             self.txtarea.insert(END,f"\n Fanta\t\t{self.fanta.get()}\t\t{self.fa_p}")
         if self.up.get()!=0:
                 self.txtarea.insert(END,f"\n 7 UP\t\t{self.up.get()}\t\t{self.up_p}")
-                
+       
+        
         self.txtarea.insert(END,f"\n------------------------------------------")
-        self.txtarea.insert(END,f"Total Drinks Tax \t\t{self.dtax.get()}")
+        self.txtarea.insert(END,f"\nTotal Coffee Tax \t\t{self.ctax.get()}")
+        self.txtarea.insert(END,f"\nTotal Pizza Tax \t\t{self.dtax.get()}")
+        self.txtarea.insert(END,f"\nTotal Drinks Tax \t\t{self.dtax.get()}")
         self.txtarea.insert(END,f"\n------------------------------------------")
-            
             
                     
 root=Tk()
