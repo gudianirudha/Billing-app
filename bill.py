@@ -253,6 +253,15 @@ class Bill_App:
         self.dtax.set("Rs. "+ str(self.total_drinks_prize*0.08))
         
         
+        self.Total_bill=float(  self.total_coffee_prize +
+                                self.total_pizza_prize +
+                                self.total_drinks_prize +
+                                self.ctax +
+                                self.ptax +
+                                self.dtax
+                        )
+        
+        
     def welcome_bill(self):
         self.txtarea.delete('1.0',END)
         self.txtarea.insert(END,"\t Welcome to RCB CAFE")
@@ -317,9 +326,13 @@ class Bill_App:
        
         
         self.txtarea.insert(END,f"\n------------------------------------------")
-        self.txtarea.insert(END,f"\nTotal Coffee Tax \t\t{self.ctax.get()}")
-        self.txtarea.insert(END,f"\nTotal Pizza Tax \t\t{self.dtax.get()}")
-        self.txtarea.insert(END,f"\nTotal Drinks Tax \t\t{self.dtax.get()}")
+        if self.ctax.get()!= "Rs. 0.0":
+            self.txtarea.insert(END,f"\nTotal Coffee Tax \t\t{self.ctax.get()}")
+        if self.ptax.get()!= "Rs. 0.0":
+            self.txtarea.insert(END,f"\nTotal Pizza Tax \t\t{self.dtax.get()}")
+        if self.dtax.get()!= "Rs. 0.0":
+            self.txtarea.insert(END,f"\nTotal Drinks Tax \t\t{self.dtax.get()}")
+            self.txtarea.insert(END,f"\nTotal Bill : \t\t Rs. {str(self.Total_bill)}")
         self.txtarea.insert(END,f"\n------------------------------------------")
             
                     
