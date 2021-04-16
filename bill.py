@@ -203,28 +203,52 @@ class Bill_App:
         self.coffee_prize.set("Rs. " + str(self.total_coffee_prize))
         self.ctax.set("Rs. "+ str(self.total_coffee_prize*0.05))
         
+        
+        
+        self.pizza_p = self.pizza.get()*100
+        self.t_p = self.tango.get()*120
+        self.v_p = self.veggie.get()*150
+        self.pa_p = self.paneer.get()*140
+        self.ve_p = self.veg.get()*125
+        self.ex_p = self.extra.get()*150 
+        self.ja_p = self.jala.get()*200
+        
+        
         self.total_pizza_prize = float(
-                                (self.pizza.get()*100) +
-                                (self.tango.get()*120) +
-                                (self.veggie.get()*150) +
-                                (self.paneer.get()*140) +
-                                (self.veg.get()*125) +
-                                (self.extra.get()*150) +
-                                (self.jala.get()*200) 
-                                )
+                                        self.pizza_p +
+                                        self.t_p +
+                                        self.v_p +
+                                        self.pa_p +
+                                        self.ve_p +
+                                        self.ex_p +
+                                        self.ja_p
+                                        
+                                    )
+ 
         self.pizza_prize.set("Rs. " + str(self.total_pizza_prize))
         self.ptax.set("Rs. "+ str(self.total_pizza_prize*0.1))
         
         
+        #variables for drinks
+        
+        self.pe_p = self.pepsi.get()*20
+        self.co_p = self.coca.get()*20 
+        self.sl_p = self.slice.get()*30 
+        self.sp_p = self.sprite.get()*20 
+        self.li_p = self.limca.get()*20
+        self.fa_p = self.fanta.get()*50 
+        self.up_p = self.up.get()*20
+        
         self.total_drinks_prize = float(
-                                (self.pepsi.get()*20) +
-                                (self.coca.get()*20) +
-                                (self.slice.get()*30) +
-                                (self.sprite.get()*20) +
-                                (self.limca.get()*25) +
-                                (self.fanta.get()*50) +
-                                (self.up.get()*20) 
+                                        self.pe_p +
+                                        self.co_p +
+                                        self.sl_p +
+                                        self.sp_p +
+                                        self.li_p +
+                                        self.fa_p +
+                                        self.up_p 
                                 )
+                                
         self.drinks_prize.set("Rs. " + str(self.total_drinks_prize))
         self.dtax.set("Rs. "+ str(self.total_drinks_prize*0.08))
         
@@ -264,7 +288,48 @@ class Bill_App:
         self.txtarea.insert(END,f"\n------------------------------------------")
         
         
+        if self.pizza.get()!=0:
+            self.txtarea.insert(END,f"\n Margherita\t\t{self.pizza.get()}\t\t{self.pizza_p}")
+        if self.tango.get()!=0:
+            self.txtarea.insert(END,f"\n Tango\t\t{self.tango.get()}\t\t{self.t_p}")
+        if self.veggie.get()!=0:
+             self.txtarea.insert(END,f"\nVeg Paradise\t\t{self.veggie.get()}\t\t{self.v_p}")
+        if self.paneer.get()!=0:
+             self.txtarea.insert(END,f"\n Paneer\t\t{self.paneer.get()}\t\t{self.pa_p}")
+        if self.veg.get()!=0:
+            self.txtarea.insert(END,f"\n Veg Wonder\t\t{self.veg.get()}\t\t{self.ve_p}")
+        if self.extra.get()!=0:
+            self.txtarea.insert(END,f"\n Extravaganza\t\t{self.extra.get()}\t\t{self.ex_p}")
+        if self.jala.get()!=0:
+            self.txtarea.insert(END,f"\n Jalapeno \t\t{self.jala.get()}\t\t{self.ja_p}")
+            
+        self.txtarea.insert(END,f"\n------------------------------------------")
+        self.txtarea.insert(END,f"Total Pizza Tax \t\t{self.ptax.get()}")
+        self.txtarea.insert(END,f"\n------------------------------------------")
         
+        
+        # Drinks 
+        
+        if self.pepsi.get()!=0:
+            self.txtarea.insert(END,f"\n Pepsi\t\t{self.pepsi.get()}\t\t{self.pe_p}")
+        if self.coca.get()!=0:
+            self.txtarea.insert(END,f"\n Coca Cola\t\t{self.coca.get()}\t\t{self.co_p}")
+        if self.slice.get()!=0:
+            self.txtarea.insert(END,f"\n Slice\t\t{self.slice.get()}\t\t{self.sl_p}")
+        if self.sprite.get()!=0:
+            self.txtarea.insert(END,f"\n Sprite\t\t{self.sprite.get()}\t\t{self.sp_p}")
+        if self.limca.get()!=0:
+            self.txtarea.insert(END,f"\n Limca\t\t{self.limca.get()}\t\t{self.li_p}")
+        if self.fanta.get()!=0:
+            self.txtarea.insert(END,f"\n Fanta\t\t{self.fanta.get()}\t\t{self.fa_p}")
+        if self.up.get()!=0:
+                self.txtarea.insert(END,f"\n 7 UP\t\t{self.up.get()}\t\t{self.up_p}")
+                
+        self.txtarea.insert(END,f"\n------------------------------------------")
+        self.txtarea.insert(END,f"Total Drinks Tax \t\t{self.dtax.get()}")
+        self.txtarea.insert(END,f"\n------------------------------------------")
+            
+            
                     
 root=Tk()
 obj = Bill_App(root)
