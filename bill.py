@@ -1,4 +1,6 @@
 from tkinter import*
+from tkinter import messagebox
+import random,os,math
 class Bill_App:
     def __init__(self,root):
         self.root = root
@@ -226,8 +228,7 @@ class Bill_App:
                                     )
  
         self.pizza_prize.set("Rs. " + str(self.total_pizza_prize))
-        self.ptax.set("Rs. "+ str(self.total_pizza_prize*0.1))
-        
+        self.ptax.set("Rs. "+ str(self.total_pizza_prize*0.05))
         
         #variables for drinks
         
@@ -250,16 +251,17 @@ class Bill_App:
                                 )
                                 
         self.drinks_prize.set("Rs. " + str(self.total_drinks_prize))
-        self.dtax.set("Rs. "+ str(self.total_drinks_prize*0.08))
+        self.dtax.set("Rs. "+ str(self.total_drinks_prize*0.05))
         
         
-        self.Total_bill=float(  self.total_coffee_prize +
-                                self.total_pizza_prize +
-                                self.total_drinks_prize +
-                                self.ctax +
-                                self.ptax +
-                                self.dtax
-                        )
+        self.Total_bill=float(  
+                            self.total_coffee_prize +
+                            self.total_pizza_prize +
+                            self.total_drinks_prize +
+                            self.ctax +
+                            self.ptax +
+                            self.dtax
+                            )
         
         
     def welcome_bill(self):
@@ -274,14 +276,21 @@ class Bill_App:
     
     def bill_area(self):
         
+        if self.name.get() == "" or self.phone.get() == "" :
+            messagebox.showerror("Error","Customer Details are must!")
+        elif self.coffee_prize.get() == "Rs. 0.0" and self.pizza_prize.get() == "Rs. 0.0" and self.drinks_prize.get() == "Rs. 0.0":
+            messagebox.showerror("Error","No Items Purchased Bruh")
+        else:
+            pass
         #Coffee Part
+    
         self.welcome_bill()
         if self.cafe.get()!=0:
             self.txtarea.insert(END,f"\n Cafe Americano\t\t{self.cafe.get()}\t\t{self.c_p}")
         if self.filter.get()!=0:
             self.txtarea.insert(END,f"\n Filter Coffee\t\t{self.filter.get()}\t\t{self.f_p}")
         if self.capp.get()!=0:
-             self.txtarea.insert(END,f"\n Cappuccino\t\t{self.capp.get()}\t\t{self.k_p}")
+             self.txtarea.insert(END,f"\n Cappuccino\t\t{self.capp.get()}\t\t{self.ca_p}")
         if self.kaapi.get()!=0:
              self.txtarea.insert(END,f"\n Kaapi Nirvana\t\t{self.kaapi.get()}\t\t{self.k_p}")
         if self.esp.get()!=0:
@@ -329,13 +338,14 @@ class Bill_App:
         if self.ctax.get()!= "Rs. 0.0":
             self.txtarea.insert(END,f"\nTotal Coffee Tax \t\t{self.ctax.get()}")
         if self.ptax.get()!= "Rs. 0.0":
-            self.txtarea.insert(END,f"\nTotal Pizza Tax \t\t{self.dtax.get()}")
+            self.txtarea.insert(END,f"\nTotal Pizza Tax \t\t{self.ptax.get()}")
         if self.dtax.get()!= "Rs. 0.0":
             self.txtarea.insert(END,f"\nTotal Drinks Tax \t\t{self.dtax.get()}")
-            self.txtarea.insert(END,f"\nTotal Bill : \t\t Rs. {str(self.Total_bill)}")
+        self.txtarea.insert(END,f"\nTotal Bill : \t\t Rs. {str(self.Total_bill)}")
         self.txtarea.insert(END,f"\n------------------------------------------")
+        print("hello")
             
                     
 root=Tk()
 obj = Bill_App(root)
-root.mainloop()
+root.mainloop() 
